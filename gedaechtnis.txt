@@ -72,3 +72,48 @@ Der Mond scheint in der Nacht. | Das ist richtig.
 Hallo ist eine Begrüßung. | Das ist richtig.
 Danke ist ein Ausdruck von Dankbarkeit. | Das ist richtig.
 Du: Wie geht es dir KI?
+Du: Hallo
+Hallo | moin!
+Du: Wie geht es dir?
+Du: Was machst du heute so
+Du: Das ist kein Deutsch
+Du: Du sollst Deutsch schreiben
+Du: Lern Deutsch!
+Du: Wie geht es dir?
+Du: Hast du ein gehirn?
+Du: NEIN
+Du: Hallo!
+Hallo! | moin!
+Du: moin!
+moin! | servus!
+Du: was geht?
+Du: was geht?
+Die Erde ist ein Planet. | Das ist richtig.
+Der Himmel ist blau. | Das ist richtig.
+Wasser ist nass. | Das ist richtig.
+Feuer ist heiß. | Das ist richtig.
+Menschen sind Säugetiere. | Das ist richtig.
+Ein Vogel kann fliegen. | Das ist richtig.
+Fische leben im Wasser. | Das ist richtig.
+Bäume wachsen im Wald. | Das ist richtig.
+Die Sonne scheint am Tag. | Das ist richtig.
+Der Mond scheint in der Nacht. | Das ist richtig.
+Hallo ist eine Begrüßung. | Das ist richtig.
+Danke ist ein Ausdruck von Dankbarkeit. | Das ist richtig.
+Was geht? | Hallo! Wie geht es dir?
+Wie geht es dir? | Mir geht es gut, danke! Und dir?
+Wer bist du? | Ich bin eine künstliche Intelligenz.
+Woher kommst du? | Ich komme aus dem Internet.
+Was machst du? | Ich helfe dir mit Informationen und Texten.
+Du: Wie gehts ?
+Du: Wie geht es dir?
+Du: Du sollst besser denken
+Du: Du kannst kein richtiges Deutsch oder?
+Du: Antworte _ 
+Du: Ja was?
+Du: Du laberst müll.
+Du: Was geht?
+Du: Was machst du?
+Du: Woher hast du dieses Wissen?
+Du: Wer ist Schalke 04
+Du: Und FC Bayer München
