@@ -1,123 +1,86 @@
+import torch
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
 import logging
-import os
-from transformers import pipeline, set_seed
 
-# Logging einrichten
-logging.basicConfig(level=logging.INFO)
+# Konfiguration der Protokollierung
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# GPT-2 Textgenerator initialisieren
-generator = pipeline('text-generation', model='gpt2')
-set_seed(42)
+# Laden des GPT-2 Modells und Tokenizers
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+model = GPT2LMHeadModel.from_pretrained("gpt2")
 
-# --- Funktionen ---
+# 2. Funktion zur Textgenerierung mit GPT-2
+def generiere_text_gpt2(prompt, max_length=100):
+    """Generiert Text kontrolliert mit GPT-2."""
+    try:
+        inputs = tokenizer.encode(prompt, return_tensors="pt")
+        outputs = model.generate(inputs, max_length=max_length, num_return_sequences=1, no_repeat_ngram_size=2, top_p=0.9, temperature=0.7)
+        generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        return generated_text.strip()
+    except Exception as e:
+        logging.error(f"Fehler bei der Textgenerierung: {e}")
+        return "Entschuldigung, ich konnte nichts generieren."
 
-def merke_dir(text, dateiname="gedaechtnis.txt"):
-    """Speichert neues Wissen."""
-    if not os.path.exists(dateiname):
-        open(dateiname, 'w').close()
-
-    with open(dateiname, "a", encoding="utf-8") as f:
-        f.write(text + "\n")
-
-def erinnere_dich(frage, dateiname="gedaechtnis.txt"):
-    """Sucht nach gespeicherten Antworten."""
-    if not os.path.exists(dateiname):
-        return []
-
-    with open(dateiname, "r", encoding="utf-8") as f:
-        erinnerungen = f.readlines()
-
-    erinnerungen = [e.strip() for e in erinnerungen if e.strip()]
-    passende_antworten = []
-
-    for erinnerung in erinnerungen:
-        if " | " in erinnerung:
-            gespeicherte_frage, gespeicherte_antwort = erinnerung.split(" | ", 1)
-            if frage.lower() in gespeicherte_frage.lower():
-                passende_antworten.append(gespeicherte_antwort)
-
-    return passende_antworten
-
-def gib_antwort(frage, level, dateiname="gedaechtnis.txt"):
-    """Gibt eine Antwort mit Level-Steuerung."""
-    erinnerungen = erinnere_dich(frage, dateiname)
-
-    if erinnerungen:
-        antwort = erinnerungen[0]
-        logging.info(f"KI: (Erinnerung) {antwort}")
-        return antwort
-    else:
-        antwort = generiere_antwort(frage, level)
-        logging.info(f"KI: (GPT-generiert) {antwort}")
-        merke_dir(f"{frage} | {antwort}", dateiname)
-        return antwort
-
-def generiere_antwort(frage, level, max_laenge=50):
-    """Generiert eine Antwort je nach Level."""
-    # Level definiert, wie kompliziert gesprochen wird
+# 3. Funktion zur Erstellung der Sprachlevel
+def sprach_level_up(level):
+    """Erhöht das Sprachlevel und macht die Sprache schwieriger."""
     if level == 1:
-        prompt = f"Antwort auf einfachem Niveau A1: {frage}\nAntwort:"
+        return "A1 - Anfänger", "Wortschatz: Begrüßung, Zahlen, einfache Sätze"
     elif level == 2:
-        prompt = f"Antworte etwas detaillierter auf Niveau A2: {frage}\nAntwort:"
+        return "A2 - Grundkenntnisse", "Wortschatz: Familie, Hobbys, Zeitangaben"
     elif level == 3:
-        prompt = f"Antworte auf B1 Niveau mit normalen Sätzen: {frage}\nAntwort:"
+        return "B1 - Mittelstufe", "Wortschatz: Reisen, Gefühle, einfache Texte verstehen"
     elif level == 4:
-        prompt = f"Antworte auf B2 Niveau mit komplexeren Sätzen: {frage}\nAntwort:"
+        return "B2 - Fortgeschritten", "Wortschatz: Diskussionen führen, abstrakte Themen"
     else:
-        prompt = f"Antworte auf C1 Niveau sehr natürlich und ausführlich: {frage}\nAntwort:"
+        return "C1 - Expertenniveau", "Wortschatz: Komplexe Themen, akademische Texte"
 
-    outputs = generator(
-        prompt,
-        max_length=max_laenge,
-        num_return_sequences=1,
-        do_sample=False  # wichtig: KEIN Sampling (keine Zufälle)
-    )
+# 4. Sprachlern-Mechanismus mit GPT-2
+def lerne_sprache(sprache, lernsprache, level):
+    sprache_level, vocab = sprach_level_up(level)
+    
+    print(f"\nDu lernst {lernsprache} auf Niveau {sprache_level}.")
+    print(f"Wortschatz: {vocab}")
+    
+    # Interaktive Frage basierend auf dem aktuellen Level
+    frage = f"Wie sagst du 'Hallo' auf {lernsprache}?"
+    print(f"Frage: {frage}")
+    
+    # GPT-2 übernimmt das Feedback und die Antwort
+    prompt_feedback = f"Erkläre auf {lernsprache} einfach, wie man 'Hallo' sagt, wenn der Lernende Anfänger ist."
+    feedback = generiere_text_gpt2(prompt_feedback)
+    print(f"KI Feedback: {feedback}")
+    
+    antwort = input(f"Antwort auf {lernsprache}: ")
+    
+    # Die KI kann Feedback geben und das Niveau erhöhen, wenn es korrekt ist
+    if antwort.lower() == "hallo" and lernsprache.lower() == "deutsch":
+        print("Richtig! Du hast ein Level-Up erreicht!")
+        level += 1
+    else:
+        print("Das war nicht richtig, versuche es noch einmal.")
+    
+    return level
 
-    antwort = outputs[0]["generated_text"]
-    # Nur den Antwortteil nehmen
-    if "Antwort:" in antwort:
-        antwort = antwort.split("Antwort:")[-1].strip()
-
-    return antwort
-
-def lade_basiswissen(dateiname="gedaechtnis.txt"):
-    """Lädt Grundwissen ins Gedächtnis."""
-    wissen = [
-        ("Wie heißt du?", "Ich heiße LingoBot."),
-        ("Wo wohnst du?", "Ich wohne im Internet."),
-        ("Was ist dein Ziel?", "Ich helfe dir beim Sprachenlernen!"),
-        ("Wie geht es dir?", "Mir geht es gut, danke!")
-    ]
-    for frage, antwort in wissen:
-        merke_dir(f"{frage} | {antwort}", dateiname)
-    logging.info("Basiswissen geladen.")
-
-# --- Hauptprogramm ---
-
-if __name__ == "__main__":
-    dateiname = "gedaechtnis.txt"
-
-    # Nur beim ersten Mal Basiswissen laden
-    if not os.path.exists(dateiname):
-        lade_basiswissen(dateiname)
-
-    print("Willkommen bei LingoBot! Stelle deine Frage. (Tippe 'exit' zum Beenden)")
-
-    # Starte auf Level 1
-    aktuelles_level = 1
-
-    while True:
-        benutzerfrage = input("\nDu: ").strip()
-
-        if benutzerfrage.lower() in ("exit", "quit", "stop"):
-            print("Tschüss und bis bald!")
+# 5. Funktion zur Sprachwahl und Levelbestimmung
+def starte_sprachlernen():
+    """Sprachlernprozess starten und Benutzer fragen, welche Sprachen sie lernen möchten."""
+    print("Willkommen zum Sprachlerner!")
+    main_sprache = input("Wähle deine Hauptsprache (z.B. Deutsch, Englisch): ")
+    lern_sprache = input("Wähle die Sprache, die du lernen möchtest (z.B. Spanisch, Französisch): ")
+    
+    level = 1  # Startniveau
+    while level <= 5:
+        level = lerne_sprache(main_sprache, lern_sprache, level)
+        
+        if level > 5:
+            print("Herzlichen Glückwunsch! Du hast das höchste Level erreicht!")
             break
+        else:
+            weiter = input("Möchtest du weitermachen? (Ja/Nein): ")
+            if weiter.lower() != "ja":
+                break
 
-        # Sonderbefehl: Level erhöhen
-        if benutzerfrage.lower() == "level up":
-            aktuelles_level = min(5, aktuelles_level + 1)
-            print(f"Neues Sprachlevel: {aktuelles_level}")
-            continue
-
-        antwort = gib_antwort(benutzerfrage, aktuelles_level, dateiname)
-        print("KI:", antwort)
+# 6. Hauptinteraktionsschleife
+if __name__ == "__main__":
+    starte_sprachlernen()
