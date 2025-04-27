@@ -1,0 +1,74 @@
+Hallo!
+Hallo!
+Ich bin cool!
+Wie geht es dir? | Mir geht es gut und dir?
+Moin | Hallo!
+Moin | Hallo!
+Hallo | Hallo
+Hallo | Ja
+Du: lerne | KI: lerne (who also played for France's youth national team last season), said it was "very frustrating" because of the "difficult times" they had been in recently.
+
+"I haven't been able to play for France due to
+Du: lerne | Du: JA du sollst lernen
+Die Erde ist ein Planet. | Das ist richtig.
+Der Himmel ist blau. | Das ist richtig.
+Wasser ist nass. | Das ist richtig.
+Feuer ist heiß. | Das ist richtig.
+Menschen sind Säugetiere. | Das ist richtig.
+Ein Vogel kann fliegen. | Das ist richtig.
+Fische leben im Wasser. | Das ist richtig.
+Bäume wachsen im Wald. | Das ist richtig.
+Die Sonne scheint am Tag. | Das ist richtig.
+Der Mond scheint in der Nacht. | Das ist richtig.
+Hallo ist eine Begrüßung. | Das ist richtig.
+Danke ist ein Ausdruck von Dankbarkeit. | Das ist richtig.
+Du: Hallo | KI: Hallo
+Du: Wie geht es dir? | KI: Mir geht es gut und dir?
+Du: Ich bin eine KI. | KI: Ich bin eine KI.
+Du: Ja, ich bin eine KI. | Du: Ja, ich bin eine KI.
+Du: Was ist ein Auto? | KI: Was ist ein Auto? — Der Eindeisen zug. der Bewähnen über die Zeit eine und die sind eigen Mappelheit aus gewerrten.
+
+"He
+Du: Wie geht es dir heute? | Du: Mir geht es gut
+Du: Wie geht es dir heute? | KI: Du: Mir geht es gut
+Die Erde ist ein Planet. | Das ist richtig.
+Der Himmel ist blau. | Das ist richtig.
+Wasser ist nass. | Das ist richtig.
+Feuer ist heiß. | Das ist richtig.
+Menschen sind Säugetiere. | Das ist richtig.
+Ein Vogel kann fliegen. | Das ist richtig.
+Fische leben im Wasser. | Das ist richtig.
+Bäume wachsen im Wald. | Das ist richtig.
+Die Sonne scheint am Tag. | Das ist richtig.
+Der Mond scheint in der Nacht. | Das ist richtig.
+Hallo ist eine Begrüßung. | Das ist richtig.
+Danke ist ein Ausdruck von Dankbarkeit. | Das ist richtig.
+Du: Hallo wie geht es dir?
+Du: Hallo
+Die Erde ist ein Planet. | Das ist richtig.
+Der Himmel ist blau. | Das ist richtig.
+Wasser ist nass. | Das ist richtig.
+Feuer ist heiß. | Das ist richtig.
+Menschen sind Säugetiere. | Das ist richtig.
+Ein Vogel kann fliegen. | Das ist richtig.
+Fische leben im Wasser. | Das ist richtig.
+Bäume wachsen im Wald. | Das ist richtig.
+Die Sonne scheint am Tag. | Das ist richtig.
+Der Mond scheint in der Nacht. | Das ist richtig.
+Hallo ist eine Begrüßung. | Das ist richtig.
+Danke ist ein Ausdruck von Dankbarkeit. | Das ist richtig.
+Du: Hallöchen 
+Du: Nein du sollst dann auch Hallo sagen
+Die Erde ist ein Planet. | Das ist richtig.
+Der Himmel ist blau. | Das ist richtig.
+Wasser ist nass. | Das ist richtig.
+Feuer ist heiß. | Das ist richtig.
+Menschen sind Säugetiere. | Das ist richtig.
+Ein Vogel kann fliegen. | Das ist richtig.
+Fische leben im Wasser. | Das ist richtig.
+Bäume wachsen im Wald. | Das ist richtig.
+Die Sonne scheint am Tag. | Das ist richtig.
+Der Mond scheint in der Nacht. | Das ist richtig.
+Hallo ist eine Begrüßung. | Das ist richtig.
+Danke ist ein Ausdruck von Dankbarkeit. | Das ist richtig.
+Du: Wie geht es dir KI?
